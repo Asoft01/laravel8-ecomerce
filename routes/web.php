@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -41,11 +42,15 @@ Route::get('/about', function(){
 
 // Route::get('/contact', [ContactController::class, 'index']);
 Route::get('/contact-sdbjksd-sdhbh', [ContactController::class, 'index'])->name('ariyan');
+
+// Category Controller
+Route::get('/category/all', [CategoryController::class, 'AllCat'])->name('all.category');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // $users = User::all();
 
     // Using Query Builder
     $users= DB::table('users')->get();
-    
+
     return view('dashboard', compact('users'));
 })->name('dashboard');
