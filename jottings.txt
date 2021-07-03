@@ -1,0 +1,4 @@
+composer require laravel/jetstream
+php artisan jetstream:install livewire
+https://laracasts.com/discuss/channels/elixir/versioning-with-mix-manifest-does-not-exist-but-it-does
+https://laracasts.com/discuss/channels/elixir/unable-to-locate-mix-file-jsappjs?page=1&replyId=672844
