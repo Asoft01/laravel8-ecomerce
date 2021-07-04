@@ -6,3 +6,5 @@ https://laracasts.com/discuss/channels/elixir/unable-to-locate-mix-file-jsappjs?
 
 20: Create Model And Migration
 php artisan make:model Category -m
+
+####### diffForHumans does not work with query builder
