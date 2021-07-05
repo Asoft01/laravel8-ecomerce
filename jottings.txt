@@ -8,3 +8,5 @@ https://laracasts.com/discuss/channels/elixir/unable-to-locate-mix-file-jsappjs?
 php artisan make:model Category -m
 
 ####### diffForHumans does not work with query builder
+
+php artisan make:model Brand -m
