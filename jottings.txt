@@ -14,3 +14,12 @@ php artisan make:model Brand -m
 http://image.intervention.io/
 
 http://image.intervention.io/getting_started/installation
+
+
+#In order to make the profile photo visible, you nee to run this command 
+php artisan storage:link
+
+#To make the profile picture visible 
+config\jetstream.php
+config\fortify.php
+C:\xampp20\htdocs\laravel8\basic\app\Providers\RouteServiceProvider.php

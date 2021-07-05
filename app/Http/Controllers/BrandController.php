@@ -106,8 +106,29 @@ class BrandController extends Controller
     // This is for Multi Image All Methods
     
     public function Multipic(){
-        
+
         $images = Multipic::all();
         return view('admin.multipic.index', compact('images'));
+    }
+
+    public function StoreImg(Request $request){
+
+        $image = $request->file('image');
+
+        foreach ($image as $multi_img) {
+            $name_gen = hexdec(uniqid()).'.'.$multi_img->getClientOriginalExtension();
+            Image::make($multi_img)->resize(300, 300)->save('image/multi/'.$name_gen);
+
+
+            $last_img = 'image/multi/'.$name_gen;
+
+            // Eloquent ORM
+            Multipic::insert([
+                'image' => $last_img,
+                'created_at' => Carbon::now()
+            ]);
+        }
+        
+        return redirect()->back()->with('success', 'Brand Inserted Successfully');
     }
 }
