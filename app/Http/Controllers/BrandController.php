@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Image;
 
 class BrandController extends Controller
 {
@@ -25,12 +26,18 @@ class BrandController extends Controller
 
         $brand_image = $request->file('brand_image');
 
-        $name_gen = hexdec(uniqid());
-        $img_ext = strtolower($brand_image->getClientOriginalExtension());
-        $img_name = $name_gen. '.'.$img_ext;
-        $up_location= 'image/brand/';
-        $last_img = $up_location.$img_name;
-        $brand_image->move($up_location, $img_name);
+        // This works without image intervention package
+        // $name_gen = hexdec(uniqid());
+        // $img_ext = strtolower($brand_image->getClientOriginalExtension());
+        // $img_name = $name_gen. '.'.$img_ext;
+        // $up_location= 'image/brand/';
+        // $last_img = $up_location.$img_name;
+        // $brand_image->move($up_location, $img_name);
+
+        $name_gen = hexdec(uniqid()).'.'.$brand_image->getClientOriginalExtension();
+        Image::make($brand_image)->resize(300, 200)->save('image/brand/'.$name_gen);
+
+        $last_img = 'image/brand/'.$name_gen;
 
         // Eloquent ORM
         Brand::insert([
@@ -90,7 +97,7 @@ class BrandController extends Controller
         $image = Brand::find($id);
         $old_image = $image->brand_image;
         unlink($old_image);
-        
+
         Brand::find($id)->delete();
         return redirect()->back()->with('success', 'Brand Deleted Successfully');
     }

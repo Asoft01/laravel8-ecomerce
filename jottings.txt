@@ -10,3 +10,7 @@ php artisan make:model Category -m
 ####### diffForHumans does not work with query builder
 
 php artisan make:model Brand -m
+
+http://image.intervention.io/
+
+http://image.intervention.io/getting_started/installation
