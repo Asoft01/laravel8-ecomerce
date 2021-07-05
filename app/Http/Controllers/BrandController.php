@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
+use App\Models\Multipic;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Image;
@@ -101,5 +102,12 @@ class BrandController extends Controller
         Brand::find($id)->delete();
         return redirect()->back()->with('success', 'Brand Deleted Successfully');
     }
+
+    // This is for Multi Image All Methods
     
+    public function Multipic(){
+        
+        $images = Multipic::all();
+        return view('admin.multipic.index', compact('images'));
+    }
 }
