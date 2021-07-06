@@ -3,24 +3,25 @@
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+/*This is gotten from laravel8 documentation */
 
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/', function () {
-    return view('welcome');
+    $brands = DB::table('brands')->get();
+    return view('home', compact('brands'));
 });
 
 
@@ -66,14 +67,21 @@ Route::get('/brand/delete/{id}', [BrandController::class, 'Delete']);
 Route::get('/multi/image', [BrandController::class, 'Multipic'])->name('multi.image');
 Route::post('/multi/add', [BrandController::class, 'StoreImg'])->name('store.image');
 
-
+// Admin All Route
+Route::get('/home/slider', [HomeController::class, 'HomeSlider'])->name('home.slider');
+Route::get('/add/slider', [HomeController::class, 'AddSlider'])->name('add.slider');
+Route::post('/store/slider', [HomeController::class, 'StoreSlider'])->name('store.slider');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    // $users = User::all();
+    /** This displays Users in the first place without creating a controller */
+    // $users = User::all(); 
 
-    // Using Query Builder
-    $users= DB::table('users')->get();
+    // Using Query Builder 
+    // $users= DB::table('users')->get();
 
-    return view('dashboard', compact('users'));
+    // return view('dashboard', compact('users'));
+
+    return view('admin.index');
 })->name('dashboard');
+Route::get('/user/logout', [BrandController::class, 'Logout'])->name('user.logout');

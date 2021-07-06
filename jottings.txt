@@ -23,3 +23,10 @@ php artisan storage:link
 config\jetstream.php
 config\fortify.php
 C:\xampp20\htdocs\laravel8\basic\app\Providers\RouteServiceProvider.php
+
+configure the smtp server
+https://mailtrap.io/inboxes/632364/messages
+
+https://laravel.com/docs/8.x/verification
+
+php artisan make:model Slider -m
