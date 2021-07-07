@@ -6,9 +6,9 @@
     <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
 
       <div class="carousel-inner" role="listbox">
-        @foreach ($sliders as $slider )
+        @foreach ($sliders as $key => $slider )
           <!-- Slide 1 -->
-          <div class="carousel-item active" style="background-image: url({{ asset($slider->image) }});">
+          <div class="carousel-item {{ $key == 0 ? 'active' : '' }}" style="background-image: url({{ asset($slider->image) }});">
             <div class="carousel-container">
               <div class="carousel-content animate__animated animate__fadeInUp">
                 <h2>{{ $slider->title }}</h2>

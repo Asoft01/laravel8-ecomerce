@@ -62,6 +62,7 @@ class BrandController extends Controller
     }
 
     public function Update(Request $request, $id){
+        // dd($request); die;
         $validatedData = $request->validate([
             'brand_name' => 'required|min:4',
         ],
@@ -112,7 +113,6 @@ class BrandController extends Controller
     // This is for Multi Image All Methods
     
     public function Multipic(){
-
         $images = Multipic::all();
         return view('admin.multipic.index', compact('images'));
     }

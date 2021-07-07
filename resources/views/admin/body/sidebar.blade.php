@@ -50,14 +50,14 @@
                               </li>
 
                               <li  class="active" >
-                                <a class="sidenav-item-link" href="index.html">
+                                <a class="sidenav-item-link" href="{{ route('home.about') }}">
                                   <span class="nav-text">Home About</span>
                                   
                                 </a>
                               </li>
                               
                               <li  class="active" >
-                                <a class="sidenav-item-link" href="index.html">
+                                <a class="sidenav-item-link" href="{{ route('multi.image') }}">
                                   <span class="nav-text">Home Portforlio</span>
                                   
                                 </a>
