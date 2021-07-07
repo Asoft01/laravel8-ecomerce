@@ -42,7 +42,6 @@
   @include('layouts.body.header')
   <!-- ======= Hero Section ======= -->
   
-  @include('layouts.body.slider')
   <main id="main">
     @yield('home_content')
   </main><!-- End #main -->
